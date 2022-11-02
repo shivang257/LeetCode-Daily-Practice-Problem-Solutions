@@ -15,6 +15,4 @@ class Solution:
             # Case 2
             else:     
                 return max(memo_solve(ptr1+1, ptr2), memo_solve(ptr1,ptr2+1))
-                       # ^    # ^ Case 2 - Option 1           ^ Case 2 - Option 2
-					   # | __You want the max() result from resulting branches in the tree 
         return memo_solve(0,0)
