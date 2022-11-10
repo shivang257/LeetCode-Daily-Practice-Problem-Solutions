@@ -7,3 +7,4 @@ class Solution:
             else:
                 res.append(c)
         return "".join(res)
+    
