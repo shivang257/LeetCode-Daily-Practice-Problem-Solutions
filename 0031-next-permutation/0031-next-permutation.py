@@ -10,8 +10,4 @@ class Solution:
         while nums[j]<=nums[k]:
             j-=1
         nums[k],nums[j]=nums[j],nums[k]
-        l,r=k+1,len(nums)-1
-        while l<r:
-            nums[l],nums[r]=nums[r],nums[l]
-            l+=1
-            r-=1
+        nums[k+1:]=reversed(nums[k+1:])
