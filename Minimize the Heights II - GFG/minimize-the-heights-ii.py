@@ -6,15 +6,14 @@ class Solution:
         mi=arr[0]
         mx=arr[n-1]
         minh=mx-mi
-        
         for i in range(1,n):
-            if arr[i]<k:
+            if k>arr[i]:
                 continue
             mi=min(arr[0]+k,arr[i]-k)
             mx=max(arr[n-1]-k,arr[i-1]+k)
-            
             minh=min(minh,mx-mi)
         return minh
+
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
