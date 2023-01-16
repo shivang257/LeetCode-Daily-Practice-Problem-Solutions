@@ -9,5 +9,4 @@ class Solution:
             for j in range(i+1,len(s)+1):
                 if s[i:j] in dic:
                     dp[j]=True
-                
         return dp[-1]
