@@ -2,25 +2,17 @@
 
 class Solution:
     def kthSmallest(self,arr, l, r, k):
-        '''
-        arr : given array
-        l : starting index of the array i.e 0
-        r : ending index of the array i.e size-1
-        k : find kth smallest element and return using this function
-        '''
-        mp={}
+        m={}
         for i in arr:
-            if i in mp:
-                mp[i]+=1
+            if i in m:
+                m[i]+=1
             else:
-                mp[i]=1
-        feq=0
-        for i in sorted(mp.keys()):
-            feq+=mp[i]
-            if feq>=k:
+                m[i]=1
+        freq=0
+        for i in sorted(m.keys()):
+            freq+=m[i]
+            if freq>=k:
                 return i
-            
-            
 
 #{ 
  # Driver Code Starts
