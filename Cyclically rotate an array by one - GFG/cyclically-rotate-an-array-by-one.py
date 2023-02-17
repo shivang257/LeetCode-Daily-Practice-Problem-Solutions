@@ -1,9 +1,13 @@
 #User function Template for python3
 
 def rotate( arr, n):
-    for i in range(n):
-        arr[i],arr[n-1]=arr[n-1],arr[i]
+    left,right=0,n-1
+    while left<right:
+        arr[left],arr[right]=arr[right],arr[left]
+        left+=1
     return arr
+    
+
 
 
 #{ 
