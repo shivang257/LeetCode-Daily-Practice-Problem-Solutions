@@ -3,16 +3,17 @@
 class Solution:
     def getMinDiff(self, arr, n, k):
         arr.sort()
-        mi=arr[0]
-        mx=arr[n-1]
-        minh=mx-mi
+        lose=arr[0]
+        more=arr[n-1]
+        minh=more-lose
         for i in range(1,n):
             if k>arr[i]:
                 continue
-            mi=min(arr[0]+k,arr[i]-k)
-            mx=max(arr[n-1]-k,arr[i-1]+k)
-            minh=min(minh,mx-mi)
+            lose=min(arr[0]+k,arr[i]-k)
+            more=max(arr[n-1]-k,arr[i-1]+k)
+            minh=min(minh,more-lose)
         return minh
+
 
 #{ 
  # Driver Code Starts
