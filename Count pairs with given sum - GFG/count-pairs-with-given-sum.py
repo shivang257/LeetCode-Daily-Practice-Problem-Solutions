@@ -1,19 +1,19 @@
 #User function Template for python3
-from collections import defaultdict
+
 class Solution:
     def getPairsCount(self, arr, n, k):
+        # code here
         c=0
-        mp=defaultdict()
+        m={}
         for i in range(n):
             target=k-arr[i]
-            if target in mp:
-                c+=mp[target]
-            if arr[i] in mp:
-                mp[arr[i]]+=1 
+            if target in m:
+                c+=m[target]
+            if arr[i] in m:
+                m[arr[i]]+=1
             else:
-                mp[arr[i]]=1
+                m[arr[i]]=1
         return c
-
 
 #{ 
  # Driver Code Starts
