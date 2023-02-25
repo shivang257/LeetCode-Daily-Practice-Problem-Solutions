@@ -3,21 +3,22 @@ class Solution:
      
     #Function to find if there exists a triplet in the 
     #array A[] which sums up to X.
-    def find3Numbers(self,a, n, X):
+    def find3Numbers(self,arr, n, X):
         # Your Code Here
-        a.sort()
+        arr.sort()
+        c=0
         for i in range(n):
-            y=X-a[i]
+            y=X-arr[i]
             low=i+1
             high=n-1
             while low<high:
-                if a[low]+a[high]==y:
+                if arr[low]+arr[high]==y:
                     return 1
-                elif a[low]+a[high]>y:
+                elif arr[low]+arr[high]>y:
                     high-=1
                 else:
                     low+=1
-        return False
+        return 0
 
 
 #{ 
