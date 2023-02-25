@@ -4,17 +4,16 @@ class Solution:
     def getPairsCount(self, arr, n, k):
         # code here
         c=0
-        m={}
+        mp={}
         for i in range(n):
             target=k-arr[i]
-            if target in m:
-                c+=m[target]
-            if arr[i] in m:
-                m[arr[i]]+=1
+            if target in mp:
+                c+=mp[target]
+            if arr[i] in mp:
+                mp[arr[i]]+=1
             else:
-                m[arr[i]]=1
+                mp[arr[i]]=1
         return c
-
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
