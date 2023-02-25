@@ -3,18 +3,17 @@ class Solution:
      
     #Function to find if there exists a triplet in the 
     #array A[] which sums up to X.
-    def find3Numbers(self,arr, n, X):
+    def find3Numbers(self,arr, n, target):
         # Your Code Here
         arr.sort()
         c=0
         for i in range(n):
-            y=X-arr[i]
             low=i+1
             high=n-1
             while low<high:
-                if arr[low]+arr[high]==y:
+                if arr[i]+arr[low]+arr[high]==target:
                     return 1
-                elif arr[low]+arr[high]>y:
+                elif arr[i]+arr[low]+arr[high]>target:
                     high-=1
                 else:
                     low+=1
