@@ -2,22 +2,19 @@
 
 class Solution:
     def sort012(self,arr,n):
-        l,h=0,n-1
-        mid=0
-        while (mid<=h):
+        start,mid,end=0,0,n-1
+        while mid<=end:
             if arr[mid]==0:
-                arr[l],arr[mid]=arr[mid],arr[l]
-                l+=1
+                arr[start],arr[mid]=arr[mid],arr[start]
                 mid+=1
-            elif arr[mid]==1:
-                mid+=1
+                start+=1
+            elif arr[mid]==2:
+                arr[end],arr[mid]=arr[mid],arr[end]
+                end-=1
             else:
-                arr[h],arr[mid]=arr[mid],arr[h]
-                #mid+=1
-                h-=1
-        return arr
-        
-        
+                mid+=1
+
+
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
