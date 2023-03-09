@@ -5,18 +5,17 @@ class Solution:
     #Function to find the maximum number of meetings that can
     #be performed in a meeting room.
     def maximumMeetings(self,n,start,end):
+        # code here
         meetings=[(start[i],end[i]) for i in range(len(end))]
-        meetings.sort()
-        ans,curr=0,[0,0]
+        meetings.sort(key = lambda x:x[1])
+        ans=1
+        prev=0
         for i in range(len(end)):
-            if curr[0]<=meetings[i][1] and curr[1]>=meetings[i][0]:
-                if meetings[i][1]<curr[1]:
-                    curr=meetings[i]
-            else:
+            if meetings[prev][1]<meetings[i][0]:
+                prev=i
                 ans+=1
-                curr=meetings[i]
         return ans
-
+        
 
 #{ 
  # Driver Code Starts
