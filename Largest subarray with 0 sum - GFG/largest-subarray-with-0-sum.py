@@ -10,7 +10,6 @@ class Solution:
             pref+=arr[i]
             if pref==0:
                 ans=i+1
-                continue
             if pref not in d:
                 d[pref]=i
             if pref in d:
