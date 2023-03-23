@@ -1,16 +1,21 @@
-class Solution(object):
+class Solution:
     def makeConnected(self, n, connections):
-        if len(connections) < n - 1: return -1
-        G = [set() for i in xrange(n)]
-        for i, j in connections:
-            G[i].add(j)
-            G[j].add(i)
-        seen = [0] * n
+        if len(connections) < n - 1:
+            return -1
+        
+        graph = [set() for i in range(n)]
+        for u, v in connections:
+            graph[u].add(v)
+            graph[v].add(u)
+        
+        visited = [0] * n
 
-        def dfs(i):
-            if seen[i]: return 0
-            seen[i] = 1
-            for j in G[i]: dfs(j)
+        def dfs(node):
+            if visited[node]:
+                return 0
+            visited[node] = 1
+            for neighbor in graph[node]:
+                dfs(neighbor)
             return 1
 
-        return sum(dfs(i) for i in xrange(n)) - 1
+        return sum(dfs(node) for node in range(n)) - 1
