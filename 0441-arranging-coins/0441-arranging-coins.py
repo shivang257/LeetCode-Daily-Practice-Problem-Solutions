@@ -1,4 +1,8 @@
 import math
 class Solution(object):
     def arrangeCoins(self, n):
-        return int((math.sqrt(8 * n + 1)-1)/2)
+        rows=1
+        while n>0:
+            rows+=1
+            n-=rows
+        return rows-1
