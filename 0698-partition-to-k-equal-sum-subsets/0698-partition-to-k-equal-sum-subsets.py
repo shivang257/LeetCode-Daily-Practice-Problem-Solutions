@@ -4,8 +4,6 @@ class Solution:
         nums.sort(reverse=True)
         sums=[0]*k
         n=len(nums)
-        if sum(nums)%k!=0:
-            return False
         def backtrack(i):
             if i==n:
                 return len(set(sums))==1
