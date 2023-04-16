@@ -1,11 +1,12 @@
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
-        ans=[[]]
+        res=[]
         nums.sort()
-        for i in nums:
-            ans+=[[i]+j for j in ans]
-        l=[]
-        for i in ans:
-            if i not in l:
-                l.append(i)
-        return l
+        def backtrack(nums,path):
+            res.append(path)
+            for j in range(len(nums)):
+                if j>0 and nums[j]==nums[j-1]:
+                    continue
+                backtrack(nums[j+1:],path+[nums[j]])
+        backtrack(nums,[])
+        return res
