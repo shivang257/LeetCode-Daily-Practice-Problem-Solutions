@@ -10,7 +10,8 @@ class Solution:
             if i==n:
                 return len(set(sums))==1
             for j in range(k):
-                sums[j]+=nums[i]
+                if sums[j]<=total:
+                    sums[j]+=nums[i]
                 if sums[j]<=total and backtrack(i+1):
                     return True
                 sums[j]-=nums[i]
