@@ -1,21 +1,9 @@
 class Solution:
-    def numWays(self, words: List[str], target: str) -> int:
-        alphabet = 26
-        mod = 1000000007
-        m = len(target)
-        k = len(words[0])
-        cnt = [[0] * k for _ in range(alphabet)]
-        for j in range(k):
-            for word in words:
-                cnt[ord(word[j]) - ord('a')][j] += 1
-        dp = [[0] * (k + 1) for _ in range(m + 1)]
-        dp[0][0] = 1
-        for i in range(m + 1):
-            for j in range(k):
-                if i < m:
-                    dp[i + 1][j + 1] += (cnt[ord(target[i]) - ord('a')][j]
-                                         * dp[i][j])
-                    dp[i + 1][j + 1] %= mod
-                dp[i][j + 1] += dp[i][j]
-                dp[i][j + 1] %= mod
-        return dp[m][k]
+    def numWays(self, words, target):
+        n, mod = len(target), 10**9 + 7
+        res = [1] + [0] * n
+        for i in range(len(words[0])):
+            count = collections.Counter(w[i] for w in words)
+            for j in range(n - 1, -1, -1):
+                res[j + 1] += res[j] * count[target[j]] % mod
+        return res[n] % mod
