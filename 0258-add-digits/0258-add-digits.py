@@ -1,12 +1,9 @@
 class Solution:
     def addDigits(self, num: int) -> int:
-        s=0
-        while len(str(num))>1:
-            num=str(num)
-            for i in num:
-                s+=int(i)
-            if len(str(s))==1:
-                return int(s)
-            num=int(s)
+        while num>9:
             s=0
+            while num:
+                s+= num%10
+                num=num//10
+            num=s
         return num
