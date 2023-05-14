@@ -7,6 +7,4 @@ class Solution:
             if pCount==sCount:
                 res.append(i-len(p)+1)
             sCount[s[i-len(p)+1]]-=1
-            if sCount[s[i-len(p)+1]] == 0:
-                del sCount[s[i-len(p)+1]]
         return res
