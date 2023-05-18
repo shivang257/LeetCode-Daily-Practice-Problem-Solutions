@@ -3,7 +3,8 @@ class Solution:
         seen={}
         
         for i,j in enumerate(nums):
-            a=target-j
-            if a in seen:
-                return [seen[a],i]
             seen[j]=i
+        for i,j in enumerate(nums):
+            a=target-j
+            if a in seen and seen[a]!=i:
+                return [seen[a],i]
