@@ -5,9 +5,11 @@ class Solution:
     #Function to find the sum of contiguous subarray with maximum sum.
     def maxSubArraySum(self,arr,N):
         m1,m2=arr[0],arr[0]
-        for i in range(1,len(arr)):
+        i=1
+        while i<len(arr): 
             m1=max(m1+arr[i],arr[i])
             m2=max(m1,m2)
+            i+=1
         return m2
 #{ 
  # Driver Code Starts
