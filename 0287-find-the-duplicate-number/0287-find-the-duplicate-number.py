@@ -1,6 +1,4 @@
 class Solution:
-    def findDuplicate(self, arr: List[int]) -> int:
-        arr.sort()
-        for i in range(1,len(arr)):
-            if arr[i]==arr[i-1]:
-                return arr[i]
+    def findDuplicate(self, nums: List[int]) -> int:
+        a=Counter(nums).most_common()
+        return (a[0][0])
