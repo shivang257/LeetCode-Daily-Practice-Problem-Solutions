@@ -4,14 +4,11 @@ class Solution:
     ##Complete this function
     #Function to find the sum of contiguous subarray with maximum sum.
     def maxSubArraySum(self,arr,N):
-        ##Your code here
         m1,m2=arr[0],arr[0]
-        for i in range(1,N):
-            m1=max(arr[i],arr[i]+m1)
+        for i in range(1,len(arr)):
+            m1=max(m1+arr[i],arr[i])
             m2=max(m1,m2)
         return m2
-
-
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
