@@ -2,16 +2,15 @@ import collections
 class Solution:
 	def topK(self, nums, k):
 		#Code here
+		l=[]
 		nums.sort(reverse=True)
 		a=collections.Counter(nums).most_common()
-		a = sorted(a, key=lambda x: x[0],
-               reverse=True)
-        a = sorted(a, key=lambda x: x[1],reverse=True)
-		l=[]
-		for i in range((k)):
+		a=sorted(a,key=lambda x:x[0],reverse=True)
+		a=sorted(a,key=lambda x:x[1],reverse=True)
+		for i in range(k):
 		    l.append(a[i][0])
-		
 		return l
+
 #{ 
  # Driver Code Starts
 		
