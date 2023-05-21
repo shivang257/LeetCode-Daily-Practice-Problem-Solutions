@@ -3,10 +3,11 @@ class Solution:
     #Function to count the frequency of all elements from 1 to N in the array.
     def frequencyCount(self, arr, N, P):
         l=[i for i in range(1,N+1)]
-        d=collections.Counter(arr)
-        a=[]
+        a=collections.Counter(arr)
         for i in range(N):
-            arr[i] = (d[l[i]])
+            arr[i]=a[l[i]]
+
+
 
 #{ 
  # Driver Code Starts
