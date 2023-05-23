@@ -1,14 +1,8 @@
-#User function Template for python3
-
-
-# m is maximum of number zeroes allowed 
-# to flip, n is size of array 
-#find maximum subarray of atmost m number of zeros
 def findZeroes(nums, n, k) :
     zeros=0
     left,right=0,0
     m=0
-    while right<n:
+    for right in range(n):
         if nums[right]==0:
             zeros+=1
         right+=1
