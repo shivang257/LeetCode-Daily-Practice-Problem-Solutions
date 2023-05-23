@@ -3,21 +3,21 @@
 
 # m is maximum of number zeroes allowed 
 # to flip, n is size of array 
-def findZeroes(arr, n, k) :
-    # code here
-    left,right=0,0
+#find maximum subarray of atmost m number of zeros
+def findZeroes(nums, n, k) :
     zeros=0
+    left,right=0,0
     m=0
-    while right<len(arr):
-        zeros+=1-arr[right]
+    while right<n:
+        if nums[right]==0:
+            zeros+=1
         right+=1
         if zeros>k:
-            zeros-=1-arr[left]
+            if nums[left]==0:
+                zeros-=1
             left+=1
         m=max(m,right-left)
     return m
-
-
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
