@@ -1,11 +1,11 @@
 class Solution:
     def maxDepth(self, s: str) -> int:
         res=0
-        cur=0
+        curr=0
         for i in s:
             if i=='(':
-                cur+=1
-                res=max(res,cur)
+                curr+=1
+                res=max(curr,res)
             if i==')':
-                cur-=1
+                curr-=1
         return res
