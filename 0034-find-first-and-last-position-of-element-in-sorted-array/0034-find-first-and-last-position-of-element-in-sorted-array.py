@@ -1,11 +1,21 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        l=[]
-        for i in range(len(nums)):
-            if nums[i]==target:
-                l.append(i)
-        if not l:
-            return [-1,-1]
-        if len(l)==1:
-            return [l[0],l[0]]
-        return [min(l),max(l)]
+        def binary(nums,target,leftbias):
+            left,right=0,len(nums)-1
+            i=-1
+            while left<=right:
+                mid=(left+right)//2
+                if nums[mid]<target:
+                    left=mid+1
+                elif nums[mid]>target:
+                    right=mid-1
+                else:
+                    i=mid
+                    if leftbias:
+                        right=mid-1
+                    else:
+                        left=mid+1
+            return i
+        left=binary(nums,target,True)
+        right=binary(nums,target,False)
+        return [left,right]
