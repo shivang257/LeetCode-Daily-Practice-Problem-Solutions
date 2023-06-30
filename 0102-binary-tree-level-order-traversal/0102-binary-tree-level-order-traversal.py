@@ -16,10 +16,10 @@ class Solution:
             size=len(queue)
             for i in range(size):
                 n=queue.popleft()
+                temp.append(n.val)
                 if n.left:
                     queue.append(n.left)
                 if n.right:
                     queue.append(n.right)
-                temp.append(n.val)
             ans.append(temp)
         return (ans)
