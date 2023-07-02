@@ -1,6 +1,7 @@
 class Solution:
     def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        queue=[(root,0)]
+        queue=deque()
+        queue.append((root,0))
         ans=0
         while queue:
             ans=max(queue[-1][1]-queue[0][1]+1,ans)
