@@ -1,10 +1,10 @@
 class Solution:
     def countNodes(self, root: Optional[TreeNode]) -> int:
-        count=0 
         queue=deque()
         queue.append(root)
         if not root:
             return 0
+        count=0
         while queue:
             size=len(queue)
             for i in range(size):
