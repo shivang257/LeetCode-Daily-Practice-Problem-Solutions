@@ -1,27 +1,23 @@
-#User function Template for python3
-
 class Solution:
-    #Function to return Breadth First Traversal of given graph.
     def bfsOfGraph(self, V, adj):
         queue=[]
-        result=[]
-        visited=[False]*V
-        
         queue.append(0)
-        visited[0]=True
-        
+        res,visited=[],[False]*V
         while queue:
             a=queue.pop(0)
-            result.append(a)
+            res.append(a)
             
             for i in adj[a]:
-                if visited[i]==False:
+                if not visited[i]:
                     queue.append(i)
-                    visited[i]=True
-        return result
+                visited[i]=True
+        return res
             
+
+
 #{ 
  # Driver Code Starts
+
 
 if __name__ == '__main__':
 	T=int(input())
