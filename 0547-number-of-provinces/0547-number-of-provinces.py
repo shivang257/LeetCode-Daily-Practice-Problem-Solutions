@@ -1,15 +1,15 @@
 class Solution:
-    def dfs(self,node,c,seen):
+    def dfs(self,node,c,visited):
         for nei,adj in enumerate(c[node]):
-            if adj and nei not in seen:
-                seen.add(nei)
-                self.dfs(nei,c,seen)
+            if adj and not visited[nei]:
+                visited[nei]=True
+                self.dfs(nei,c,visited)
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        seen=set()
+        visited=[False]*(len(isConnected))
         n=len(isConnected)
         res=0
         for i in range(n):
-            if i not in seen:
+            if not visited[i]:
                 res+=1
-                self.dfs(i,isConnected,seen)
+                self.dfs(i,isConnected,visited)
         return res
