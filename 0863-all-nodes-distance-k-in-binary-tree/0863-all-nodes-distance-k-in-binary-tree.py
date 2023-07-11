@@ -1,26 +1,40 @@
+from collections import defaultdict
+
 class Solution:
-    def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
-        adjacent=defaultdict(list)
+    
+    def __init__(self):
+        self.graph = defaultdict(set)
+        self.visited = set()
         
-        def dfs(node,parent_node):
-            if parent_node:
-                adjacent[node].append(parent_node)
-            if node.left:
-                adjacent[node].append(node.left)
-                dfs(node.left,node)
-            if node.right:
-                adjacent[node].append(node.right)
-                dfs(node.right,node)
-        dfs(root,None)
-        seen={target}
-        ans=[]
-        def bfs(node,k):
-            if k==0:
-                ans.append(node.val)
-            else:
-                seen.add(node)
-                for adj in adjacent[node]:
-                    if adj not in seen:
-                        bfs(adj,k-1)
-        bfs(target,k)
-        return ans
+    
+    def distanceK(self, root, target, K):
+        self.dfs(root, target.val)
+        res = [target.val]
+        
+        for _ in range(K):
+            size, level = len(res), []
+            
+            for _ in range(size):
+                cur = res.pop()
+                if cur not in self.visited:
+                    level += self.graph.get(cur, [])
+                    self.visited.add(cur)
+            
+            res = level
+            
+        return [val for val in res if val not in self.visited]
+            
+    
+    def dfs(self, root: TreeNode, target: int) -> None:
+        if not root:
+            return
+        
+        if root.left:
+            self.graph[root.val].add(root.left.val)
+            self.graph[root.left.val].add(root.val)
+            self.dfs(root.left, target)
+            
+        if root.right:
+            self.graph[root.val].add(root.right.val)
+            self.graph[root.right.val].add(root.val)
+            self.dfs(root.right, target)
