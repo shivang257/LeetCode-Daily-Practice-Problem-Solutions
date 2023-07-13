@@ -1,5 +1,5 @@
 class Solution:
-    def canFinish(self, n, prerequisites):
+    def canFinish(self, n: int, prerequisites: List[List[int]]) -> bool:
         G = [[] for i in range(n)]
         degree = [0] * n
         for j, i in prerequisites:
