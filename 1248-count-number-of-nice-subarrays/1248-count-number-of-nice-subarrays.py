@@ -1,13 +1,15 @@
 class Solution:
     def numberOfSubarrays(self, nums: List[int], k: int) -> int:
-        for i in range(len(nums)):
-            nums[i]=nums[i]%2
-        mp=defaultdict(int)
-        mp[0]=1
         res=0
-        psum=0
-        for i in nums:
-            psum+=i
-            res+=mp[psum-k]
-            mp[psum]+=1
+        l=0
+        count=0
+        for r in range(len(nums)):
+            if nums[r]%2:
+                k-=1
+                count=0
+            while k==0:
+                k+=nums[l]%2
+                l+=1
+                count+=1
+            res+=count
         return res
