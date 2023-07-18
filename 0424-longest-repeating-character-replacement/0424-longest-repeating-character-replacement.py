@@ -1,15 +1,15 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        count=Counter()
-        res=0
-        l=0
-        maxf=0
+        l = 0
+        freqdict = defaultdict(int)
+        result = 0
         for r in range(len(s)):
-            count[s[r]]+=1
-            maxf=max(maxf,count[s[r]])
-            
-            if r-l+1> k+maxf:
-                count[s[l]]-=1
-                l+=1
-            res=max(res,r-l+1)
-        return res
+            freqdict[s[r]] += 1
+            cur_len = r - l + 1
+            if cur_len - max(freqdict.values()) > k:
+                freqdict[s[l]] -= 1
+                l += 1
+            else:
+                result = max(result, cur_len)
+        return result    
+    
