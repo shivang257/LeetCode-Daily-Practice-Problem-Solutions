@@ -5,7 +5,7 @@ class Solution:
         res=0
         for r in range(len(nums)):
             mp[nums[r]]+=1
-            while len(mp)==k+1:
+            while len(mp)>k:
                 mp[nums[l]]-=1
                 if mp[nums[l]]==0:
                     mp.pop(nums[l])
