@@ -1,27 +1,27 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        if t=='':
-            return ''
-        count,window=defaultdict(int),defaultdict(int)
-        for i in t:
-            count[i]+=1
+        target_count = collections.Counter(t)
+        start, end = 0, 0
+        min_window = ''
+        target_len = len(t)
         
-        have,need=0,len(count)
-        res,reslen=[-1,-1],float('inf')
-        l=0
-        for r in range(len(s)):
-            window[s[r]]+=1
-            
-            if s[r] in count and window[s[r]]==count[s[r]]:
-                have+=1
+        for end in range(len(s)):
+            if target_count[s[end]] > 0:
+                target_len -= 1
                 
-            while have==need:
-                if r-l+1 < reslen:
-                    reslen=r-l+1
-                    res=[l,r]
-                window[s[l]]-=1
-                if s[l] in count and window[s[l]]<count[s[l]]:
-                    have-=1
-                l+=1
-        l,r=res
-        return s[l:r+1] 
+            target_count[s[end]] -= 1
+            #print('Target count',target_count)
+            while target_len == 0:
+                window_len = end - start + 1
+                
+                if not min_window or window_len < len(min_window):
+                    min_window = s[start:end + 1]
+                    
+                target_count[s[start]] += 1
+                #print('In while target count',target_count)
+                if target_count[s[start]] > 0:
+                    target_len += 1
+                #print('Target length', target_len)
+                start += 1
+                
+        return min_window
