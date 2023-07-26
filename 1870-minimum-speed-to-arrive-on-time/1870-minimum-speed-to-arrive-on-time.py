@@ -8,4 +8,4 @@ class Solution:
                 lo = speed + 1
             else:
                 hi = speed
-        return -1 if lo == 10 ** 7 + 1 else lo  
+        return -1 if lo == 10 ** 7 + 1 else lo
