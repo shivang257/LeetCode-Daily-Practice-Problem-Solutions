@@ -1,18 +1,25 @@
 class Solution:
-    def search(self, nums: List[int], target: int) -> int:
-        l,r=0,len(nums)-1
-        while l<=r:
-            mid=(l+r)//2
-            if nums[mid]==target:
-                return mid
-            elif nums[mid]>=nums[l]:
-                if nums[l]<=target and nums[mid]>=target:
-                    r=mid-1
+    def search(self, A: List[int], target: int) -> int:
+        n = len(A)
+        left, right = 0, n - 1
+        if n == 0: return -1
+        
+        while left <= right:
+            mid = left + (right - left) // 2
+            if A[mid] == target: return mid
+            
+            # inflection point to the right. Left is strictly increasing
+            if A[mid] >= A[left]:
+                if A[left] <= target < A[mid]:
+                    right = mid - 1
                 else:
-                    l=mid+1
+                    left = mid + 1
+                    
+            # inflection point to the left of me. Right is strictly increasing
             else:
-                if nums[r]>=target and nums[mid]<=target:
-                    l=mid+1
+                if A[mid] < target <= A[right]:
+                    left = mid + 1
                 else:
-                    r=mid-1
+                    right = mid - 1
+            
         return -1
