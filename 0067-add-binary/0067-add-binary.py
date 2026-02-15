@@ -1,18 +1,22 @@
-class Solution:
-    def addBinary(self, a: str, b: str) -> str:
+class Solution(object):
+    def addBinary(self, a, b):
+        
+        i, j = len(a) - 1, len(b) - 1
         carry = 0
-        result = ''
+        result = []
 
-        a = list(a)
-        b = list(b)
+        while i >= 0 or j >= 0 or carry:
+            total = carry
 
-        while a or b or carry:
-            if a:
-                carry += int(a.pop())
-            if b:
-                carry += int(b.pop())
+            if i >= 0:
+                total += int(a[i])
+                i -= 1
 
-            result += str(carry %2)
-            carry //= 2
+            if j >= 0:
+                total += int(b[j])
+                j -= 1
 
-        return result[::-1]
+            result.append(str(total % 2))
+            carry = total // 2
+
+        return "".join(reversed(result))
