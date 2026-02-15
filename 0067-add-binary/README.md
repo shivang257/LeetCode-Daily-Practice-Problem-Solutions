@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/add-binary/">67. Add Binary</a></h2><h3>Easy</h3><hr><div><p>Given two binary strings <code>a</code> and <code>b</code>, return <em>their sum as a binary string</em>.</p>
+<h2><a href="https://leetcode.com/problems/add-binary/?envType=daily-question&envId=2026-02-15">67. Add Binary</a></h2><h3>Easy</h3><hr><p>Given two binary strings <code>a</code> and <code>b</code>, return <em>their sum as a binary string</em>.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
@@ -13,7 +13,6 @@
 
 <ul>
 	<li><code>1 &lt;= a.length, b.length &lt;= 10<sup>4</sup></code></li>
-	<li><code>a</code> and <code>b</code> consist&nbsp;only of <code>'0'</code> or <code>'1'</code> characters.</li>
+	<li><code>a</code> and <code>b</code> consist&nbsp;only of <code>&#39;0&#39;</code> or <code>&#39;1&#39;</code> characters.</li>
 	<li>Each string does not contain leading zeros except for the zero itself.</li>
 </ul>
-</div>
